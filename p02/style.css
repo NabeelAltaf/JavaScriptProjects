@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    box-sizing: border-box; /* ALlows for better sizing with the html elements */
+}
+
+body {
+    background-color: slategray;
+    display: flex; /* All the content will allign horizontally */
+    flex-direction: column; /* Change the direction back to vertical */
+    color: white;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Counts for 100% of the height in the entire screen */
+    font-family: 'Lato', sans-serif;
+    margin: 0; /* Puts you in the exact center */
+}
+
+.movie-container {
+    margin: 20px 0; /* Add 20px margin to both top and bottom */
+}
+
+.movie-container select {
+    background-color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 5px 15px 5px 15px;
+    appearance: none; /* Add support for web-kit browsers */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.seat {
+    background-color: darkgray;
+    height: 12px;
+    width: 15px;
+    margin: 3px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.seat.selected {
+    background-color: paleturquoise;
+}
+
+.seat.occupied {
+    background-color:white;
+}
+
+.seat:nth-of-type(2) { /* Selector option selects the 2nd seat in each row */
+    margin-right: 20px;
+}
+
+.seat:nth-last-of-type(2) { /* Selects the last two seats of each row */
+    margin-left: 20px;
+}
+
+.seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.legend {
+    background-color: rgba(0, 0, 0, 0.1); /* Add transparency to the legend box */
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: lightgray;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 10px;
+}
+
+.legend li small {
+    margin-left: 2px;
+}
+
+.legend .seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.container {
+    perspective: 900px; /* Gives a 3d image */
+    margin-bottom: 30px;
+}
+
+.row {
+    display: flex; /* Removes the collumn display that we declared in body */
+}
+
+.screen {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotateX(-45deg);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+p.text {
+    margin: 5px 0;
+}
+
+p.text span {
+    color: paleturquoise; 
+}
