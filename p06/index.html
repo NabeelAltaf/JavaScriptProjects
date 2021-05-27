@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>My Landing Page</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src = "https://randomuser.me/api/portraits/men/15.jpg" alt = "Random User Image">
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Syllabus</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <button id="toggle" class="toggle">
+        <i class="fa fa-bars fa-2x"></i>
+        </button>
+        <h1>Landing Page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, ullam.</p>
+        <button class="apply" id="open">Apply Now</button>
+    </header>
+
+    <div class="container">
+        <h2>Cloud Native Computing</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum necessitatibus, voluptatem quae adipisci ab doloremque!</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt rerum in sed sapiente, deserunt voluptas.</p>
+
+        <h2>More informaiton</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae tempora nam quia placeat autem deleniti quidem eos deserunt, eum vero? Non nihil hic nostrum sint aliquid dicta labore voluptatem exercitationem!</p>
+
+        <h2>Syllabus</h2>
+        <ul>
+            <li>Project 1</li>
+            <li>Project 2</li> 
+            <li>Project 3</li> 
+        </ul>
+
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui natus maxime temporibus hic necessitatibus asperiores nisi voluptate quod eveniet odio? Sed numquam aut at nam commodi animi. Itaque, atque autem unde in a at ad commodi ea nemo tenetur laudantium. Commodi laudantium corporis autem consectetur, eos necessitatibus molestias dolorem at adipisci eius, saepe nobis tempore eveniet vel officiis et excepturi quas vitae quo! Quisquam deleniti, voluptas quae sunt autem ipsa natus et? Accusamus, animi aliquam! Numquam, nemo asperiores quaerat aut dignissimos autem quibusdam quod magni illo, aspernatur ipsam sit possimus non voluptatem pariatur molestiae recusandae eius est. Odio, temporibus dignissimos!</p>
+
+    </div>
+    
+    <div class="modal-container" id="modal">
+        <div class="modal">
+            <button class="close-btn" id="close">
+                <i class = "fa fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3>Apply</h3>
+            </div>
+            <div class="modal-content">
+                <p>To sign up for classes, please submit this form.</p>
+                <form class="modal-form">
+                    <div>
+                        <label for="name">Full Name</label>
+                        <input type="text" id = "name" placeholder = "Full Name" class = "form-input">
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" id = "email" placeholder = "Email" class = "form-input">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id = "password" placeholder = "Password" class = "form-input">
+                    </div>
+                    <div>
+                        <label for="password2">Full Name</label>
+                        <input type="password" id = "password2" placeholder = "Confirm Password" class = "form-input">
+                    </div>
+                    <input type="submit" value="Submit" class = "submit-btn">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src = "script.js"></script>
+</body>
+</html>
