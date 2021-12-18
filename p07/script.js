@@ -10,12 +10,10 @@ const restartButton = document.getElementById('restart');
 const hangmanParts = document.querySelectorAll('.hangman-part'); // Will be saved in an array
 
 // An array of words to select from
-const wordPool = ['JavaScript', 'Computer', 'Hangman', 'Facebook', 'YouTube'];
-
+const wordPool = ['javascript', 'computer', 'hangman', 'facebook', 'youtube'];
 
 // Selecting a word at random from the wordpool
 let selectedWord = wordPool[Math.floor(Math.random() * wordPool.length)];
-
 
 // Arrays to classify the input of the user
 const correctLetters = [];
@@ -23,7 +21,15 @@ const incorrectLetters = [];
 
 // Function to display the word on the screen
 function displaySelectedWord() {
-    // Stopping at 13:00
+    word.innerHTML = `
+        ${selectedWord.split('').map(letter => `
+        <span class = "letter">
+            ${correctLetters.includes(letter) ? letter : '' }
+        </span>`).join('')}
+    `;
+
+    console.log(word.innerText);
+    // 24:57
 }
 
 displaySelectedWord();
