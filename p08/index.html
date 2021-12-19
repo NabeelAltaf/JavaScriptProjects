@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Random Meal Finder</title>
+</head>
+<body>
+
+    <!-- Form Container Search Input Field and Button -->
+    <!-- The search form -->
+    <div class="container">
+        <h1>Random Meal Finder</h1>
+
+        <div class="flex"> <!-- Horizontally Aligned For Search Field (so that button can be next to the search field) -->
+            <form class="flex" id="submit">
+                <input type="text" id="search" placeholder="Enter meal or keyword for search">
+                <button class="search-btn" type="submit"> <!-- Type is submit because this will submit the form -->
+                    <i class = "fas fa-search"></i>
+                </button> 
+            </form>
+            <button class="random-btn" id="random">
+                <i class="fas fa-random"></i>
+            </button>
+        </div>
+
+        <!-- We are adding another div here beacuse when the search result is completed, it will be updated here. -->
+        <!-- Result Heading -->
+        <div id="result-heading"></div> <!-- Content will be added through javascript upon search from user -->
+
+        <!-- Container div for all meals from API search-->
+        <div class="meals" id="meals"></div>
+
+        <!-- To display additional information for a selected meal -->
+        <div id="selected-meal"></div> <!-- Will be updated via javascript -->
+
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
