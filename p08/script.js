@@ -1,7 +1,5 @@
 // DOM Elements grabbing
 
-
-
 const search = document.getElementById('search'); // search button
 const submit = document.getElementById('submit'); // submit form
 const random = document.getElementById('random'); // random button
@@ -15,6 +13,9 @@ function searchMeal (e) {
     // Prevent the page from reloading on submit
     e.preventDefault();
 
+    // Clear the selected meal instructions
+    selectedMeal.innerHTML = '';
+
     // Get the search term from the input field
     const term = search.value;
 
@@ -24,7 +25,6 @@ function searchMeal (e) {
         fetch (`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`) // backticks so that we can use the term with it
             .then (res => res.json())
             .then (data => {
-                console.log(data);
                 resultHeading.innerHTML = `<h2>Search results for '${term}'</h2>`;
                 if (data.meals == null) {
                     resultHeading.innerHTML = `<p>No results found for '${term}'. Please try a different search.<p>`
@@ -32,7 +32,7 @@ function searchMeal (e) {
                     mealContainer.innerHTML = data.meals.map( meal => `
                         <div class = "meal">
                             <img src = "${meal.strMealThumb}" alt = "${meal.strMeal}"/>
-                            <div class = "meal-info data-mealID=${meal.idMeal}">
+                            <div class = "meal-info" data-mealID="${meal.idMeal}">
                                 <h3>${meal.strMeal}</h3>
                             </div>
                         </div>
@@ -55,10 +55,45 @@ function getMealByID (mealID) {
     fetch (`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`)
     .then (res => res.json())
     .then (data => {
-        console.log(data);
+        // Since this returns an array, we need the first element
+        const meal = data.meals[0];
+        addMealToDOM(meal);
     })
 }
 
+// Function to add a meal to DOM
+function addMealToDOM (meal) {
+    // All of the ingredients are seperate objects from their measures
+    const ingredients = []; 
+
+    for (let i = 1; i <= 20; i++) {
+        if (meal[`strIngredient${i}`]) {
+            ingredients.push(`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`);
+        } else {
+            break;
+        }
+    }
+
+    selectedMeal.innerHTML = `
+        <div class = "selected-meal">
+            <h1>${meal.strMeal}</h1>
+            <img src = "${meal.strMealThumb}" alt = "${meal.strMeal}" />
+
+            <div class = "selected-meal-info">
+                ${meal.strCategory ? `<p class = "selected-meal-heading">${meal.strCategory}</p>` : ''}
+                ${meal.strArea ? `<p class = "selected-meal-heading">${meal.strArea}</p>` : ''}
+            </div>
+
+            <div class = "main">
+                <p>${meal.strInstructions}</p>
+                <h2>Ingredients</h2>
+                <ul>
+                    ${ingredients.map ( ingredient => `<li>${ingredient}</li>` ).join('')}
+                </ul>
+            </div>
+        </div>
+    `;
+}
 
 // First we create the submit button. Connect with the API and return
 // 1st step is to create an event listener on the button
@@ -82,11 +117,7 @@ function getMealByID (mealID) {
 
         if (mealInfo) {
             const mealID = mealInfo.getAttribute('data-mealID');
-            console.log(mealInfo);
-            console.log(mealID);
             getMealByID(mealID);
         }
 
 });
-
-    // stopping at 1:01:53
