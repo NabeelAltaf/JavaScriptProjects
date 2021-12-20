@@ -100,24 +100,34 @@ function addMealToDOM (meal) {
 
 
 // Event Listener
-    // 1. Submit
-    submit.addEventListener('submit', searchMeal);
+// 1. Submit
+submit.addEventListener('submit', searchMeal);
 
-    // 2. Upon clicking a meal, instructions will be displayed for the recipe
-    mealContainer.addEventListener('click', e => {
-        // The first thing we need to do is figure out what is being clicked
-        const mealInfo = e.path.find( item => {
-            // This function shows the full stack, HTMl down to the meal info. We need to add a filter
-            if (item.classList) {
-                return item.classList.contains('meal-info');
-            } else {
-                return false
-            }
-        });
-
-        if (mealInfo) {
-            const mealID = mealInfo.getAttribute('data-mealID');
-            getMealByID(mealID);
+// 2. Upon clicking a meal, instructions will be displayed for the recipe
+mealContainer.addEventListener('click', e => {
+    // The first thing we need to do is figure out what is being clicked
+    const mealInfo = e.path.find( item => {
+        // This function shows the full stack, HTMl down to the meal info. We need to add a filter
+        if (item.classList) {
+            return item.classList.contains('meal-info');
+        } else {
+            return false
         }
+    });
+
+    if (mealInfo) {
+        const mealID = mealInfo.getAttribute('data-mealID');
+        getMealByID(mealID);
+    }
 
 });
+
+// 3. Random Button Generator
+random.addEventListener('click', e => {
+    fetch (`https://www.themealdb.com/api/json/v1/1/random.php`)
+    .then (res => res.json())
+    .then (data => {
+        console.log(data);
+    });
+});
+
